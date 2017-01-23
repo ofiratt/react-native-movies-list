@@ -1,13 +1,22 @@
-import * as types from './action-types';
+import {MOVIE_DETAILS_SCREEN} from '../../screens'
 import {getAllMoviesAPI, findMoviesAPI} from './api'
 
-export const getAllMovies = () => dispatch => getAllMoviesAPI().then(movies =>
-  dispatch({type: types.ALL_MOVIES, movies: mapRawMovies(movies)})
-);
+export const getAllMovies = () => async dispatch => {
+  const movies = await getAllMoviesAPI();
+  dispatch({type: 'incoming-data', movies: mapRawMovies(movies)});
+};
 
-export const findMovies = query => dispatch => findMoviesAPI(query).then(movies =>
-  dispatch({type: types.FIND_MOVIES, movies: mapRawMovies(movies)})
-);
+export const findMovies = query => async dispatch => {
+  const movies = await findMoviesAPI(query);
+  dispatch({type: 'incoming-data', movies: mapRawMovies(movies)});
+};
+
+export const showMovieDetails = (navigator, id) => navigator.push({
+  screen: MOVIE_DETAILS_SCREEN,
+  passProps: {
+    movieId: id
+  }
+});
 
 export const selector = {
   movie: (state, id) => state.moviesList.get(id),

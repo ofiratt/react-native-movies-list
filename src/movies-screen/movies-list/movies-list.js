@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  ListView
-} from 'react-native';
+import {Text, ListView} from 'react-native';
 import MoviesRecord from './movie-record/movie-record';
 
 class MoviesList extends Component {
@@ -12,7 +9,7 @@ class MoviesList extends Component {
     this.state = {dataSource: ds.cloneWithRows(props.movies)};
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps() {
     this.setState((prevState, props) => ({dataSource: this.state.dataSource.cloneWithRows(props.movies)}));
   }
 

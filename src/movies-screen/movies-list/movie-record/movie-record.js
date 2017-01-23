@@ -1,25 +1,17 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Image
-} from 'react-native';
-
-const renderTitle = (title, year) => year ? <Text>{title} ({year})</Text> : <Text>{title}</Text>;
+import {StyleSheet, View, Button, Image} from 'react-native';
+import {MovieTitle, MovieScore} from '../../../movie-components/movie-components';
 
 class MoviesRecord extends Component {
   render() {
-    const {poster_path, year, title, vote_average, showMovieDetails, id} = this.props;
+    const {poster_path, showMovieDetails, id} = this.props;
 
     return (
       <View style={styles.container}>
-        <Image style={styles.preview}
-               source={{uri: poster_path}}/>
+        <Image style={styles.preview} source={{uri: poster_path}}/>
         <View style={styles.details}>
-          {renderTitle(title, year)}
-          <Text>☆ {vote_average}</Text>
+          <MovieTitle {...this.props}/>
+          <MovieScore {...this.props}/>
         </View>
         <Button style={styles.showMore} title=">" onPress={() => showMovieDetails(id)}/>
       </View>);
@@ -34,4 +26,3 @@ const styles = StyleSheet.create({
 });
 
 export default MoviesRecord;
-

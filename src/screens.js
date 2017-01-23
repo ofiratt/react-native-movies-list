@@ -1,4 +1,4 @@
-import WelcomeScreen from './welcome-screen/welcome-screen';
+import WelcomeScreen from './movies-screen/movies-screen';
 import WelcomeDetailsScreen from './movie-details-screen/movie-details-screen';
 import { Navigation } from 'react-native-navigation';
 

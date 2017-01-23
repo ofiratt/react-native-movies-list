@@ -4,8 +4,8 @@ import _ from 'lodash';
 
 export default class SearchBar extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.onSearch = _.debounce(this.onSearch.bind(this), 300);
   }
 
@@ -13,8 +13,7 @@ export default class SearchBar extends Component {
     return <TextInput
       style={{height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, borderRadius: 5}}
       onChangeText={text => this.onSearch(text)}
-      placeholder="Search here"
-    />
+      placeholder="Search here"/>
   }
 
   onSearch(text) {

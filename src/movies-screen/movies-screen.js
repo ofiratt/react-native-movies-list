@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
 import {connect} from 'react-redux';
-import {getAllMovies, findMovies, selector} from '../stores/movies/actions'
+import {getAllMovies, findMovies, showMovieDetails, selector} from '../stores/movies/actions'
 import SearchBar from './serach-bar/search-bar';
 import MoviesList from './movies-list/movies-list';
-import {MOVIE_DETAILS_SCREEN} from '../screens'
-
 
 class WelcomeScreen extends Component {
   componentDidMount() {
@@ -24,12 +22,9 @@ class WelcomeScreen extends Component {
 
   showMovieDetails(id) {
     const {navigator} = this.props;
-    navigator.push({screen: MOVIE_DETAILS_SCREEN, passProps:{
-      movieId: id
-    }});
+    showMovieDetails(navigator, id);
   }
 }
 
 const mapStateToProps = state => ({movies: selector.movies(state)});
-
 export default connect(mapStateToProps, {getAllMovies, findMovies})(WelcomeScreen);

@@ -1,26 +1,18 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet
-} from 'react-native';
+import {Text, View, Image, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {selector} from '../stores/movies/actions'
-
-const renderTitle = (title, year) => year ? <Text style={styles.titleText}>{title} ({year})</Text> :
-  <Text style={styles.titleText}>{title}</Text>;
+import {MovieTitle, MovieScore} from '../movie-components/movie-components';
 
 class MovieDetailsScreen extends Component {
   render() {
-    const {backdrop_path, year, overview, title, vote_average} = this.props.movie;
+    const {backdrop_path, overview} = this.props.movie;
 
     return <View style={styles.container}>
-      <Image style={{alignSelf: 'stretch', height: 300}}
-             source={{uri: backdrop_path}}></Image>
+      <Image style={{alignSelf: 'stretch', height: 300}} source={{uri: backdrop_path}}></Image>
       <View style={styles.titleContainer}>
-        {renderTitle(title, year)}
-        <Text style={styles.titleText}>☆ {vote_average}</Text>
+        <MovieTitle {...this.props} style={styles.titleText}/>
+        <MovieScore {...this.props} style={styles.titleText}/>
       </View>
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>{overview}</Text>
@@ -38,5 +30,4 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => ({movie: selector.movie(state, ownProps.movieId)});
-
 export default connect(mapStateToProps)(MovieDetailsScreen);
