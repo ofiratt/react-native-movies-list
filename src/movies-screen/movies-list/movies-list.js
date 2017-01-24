@@ -20,9 +20,9 @@ class MoviesList extends Component {
   createMovieList() {
     const {showMovieDetails} = this.props;
 
-    return <ListView
+    return <ListView testID="movie_list"
       dataSource={this.state.dataSource}
-      renderRow={rowData => <MoviesRecord {...rowData} showMovieDetails={showMovieDetails} />}
+      renderRow={(rowData, _, index) => <MoviesRecord {...rowData} index={index} showMovieDetails={showMovieDetails} />}
     />;
   }
 

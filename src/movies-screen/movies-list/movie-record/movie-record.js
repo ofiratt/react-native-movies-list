@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Button, Image} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Text, Image} from 'react-native';
 import {MovieTitle, MovieScore} from '../../../movie-components/movie-components';
 
 class MoviesRecord extends Component {
   render() {
-    const {poster_path, showMovieDetails, id} = this.props;
+    const {poster_path, showMovieDetails, id, index} = this.props;
 
     return (
-      <View style={styles.container}>
+      <View teststyle={styles.container}>
         <Image style={styles.preview} source={{uri: poster_path}}/>
         <View style={styles.details}>
           <MovieTitle {...this.props}/>
           <MovieScore {...this.props}/>
         </View>
-        <Button style={styles.showMore} title=">" onPress={() => showMovieDetails(id)}/>
+        <TouchableOpacity testID={'movie_action_'+ index} style={styles.showMore} title=">"
+                          onPress={() => showMovieDetails(id)}>
+          <Text>></Text>
+        </TouchableOpacity>
       </View>);
   }
 }

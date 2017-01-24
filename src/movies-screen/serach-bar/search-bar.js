@@ -11,6 +11,7 @@ export default class SearchBar extends Component {
 
   render() {
     return <TextInput
+      {...this.props}
       style={{height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, borderRadius: 5}}
       onChangeText={text => this.onSearch(text)}
       placeholder="Search here"/>

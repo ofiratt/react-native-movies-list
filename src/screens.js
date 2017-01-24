@@ -1,6 +1,6 @@
 import WelcomeScreen from './movies-screen/movies-screen';
 import WelcomeDetailsScreen from './movie-details-screen/movie-details-screen';
-import { Navigation } from 'react-native-navigation';
+import {Navigation} from 'react-native-navigation';
 
 export const WELCOME_SCREEN = 'com.example.WelcomeScreen';
 export const MOVIE_DETAILS_SCREEN = 'com.example.MovieDetailsScreen';

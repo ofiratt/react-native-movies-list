@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "detox": "detox"
   },
   "dependencies": {
     "lodash": "^4.17.4",
@@ -16,6 +17,8 @@
     "redux-thunk": "1.x.x"
   },
   "devDependencies": {
+    "detox": "^4.1.4",
+    "detox-server": "^1.1.0",
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
     "jest": "18.1.0",
@@ -24,5 +27,15 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "session": {
+      "server": "ws://localhost:8099",
+      "sessionId": "YourProject"
+    },
+    "ios-simulator":   {
+      "app": "ios/build/Build/Products/Debug-iphonesimulator/template.app",
+      "device": "iPhone 7"
+    }
   }
 }

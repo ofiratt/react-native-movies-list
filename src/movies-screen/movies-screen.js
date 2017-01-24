@@ -14,7 +14,7 @@ class WelcomeScreen extends Component {
     const {movies, findMovies} = this.props;
 
     return (<View>
-      <SearchBar onSearch={text => findMovies(text)}></SearchBar>
+      <SearchBar testID="search_bar" onSearch={text => findMovies(text)}></SearchBar>
       <Text> here is the movie app main page</Text>
       <MoviesList movies={movies} showMovieDetails={id => this.showMovieDetails(id)}></MoviesList>
     </View>);
